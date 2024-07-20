@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Karakter : MonoBehaviour
 {
+    public GameManager _GameManager;
     private void FixedUpdate()
     {
         transform.Translate(Vector3.forward * .5f * Time.deltaTime);
@@ -26,5 +27,14 @@ public class Karakter : MonoBehaviour
 
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "X2" || other.name == "+3")
+        {
+            _GameManager.AdamYonetimi(other.name, other.transform);
+        }
+
     }
 }
