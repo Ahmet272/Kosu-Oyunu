@@ -31,7 +31,7 @@ public class Karakter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "X2" || other.name == "+3")
+        if (other.name == "X2" || other.name == "+3" || other.name == "-4" || other.name == "/2")
         {
             _GameManager.AdamYonetimi(other.name, other.transform);
         }
