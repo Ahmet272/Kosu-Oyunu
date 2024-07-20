@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static int AnlikKarakterSayisi = 1;
 
     public List<GameObject> Karakterler;
+    public List<GameObject> OlusmaEfektleri;
+    public List<GameObject> YokOlmaEfektleri;
     void Start()
     {
         int bolen = 8 / 2;
@@ -57,5 +59,19 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void YokOlmaEfektiOlustur(Transform Pozisyon)
+    {
+        foreach (var item in YokOlmaEfektleri)
+        {
+            if (!item.activeInHierarchy)
+            {
+                item.SetActive(true);
+                item.transform.position = Pozisyon.position;
+                item.GetComponent<ParticleSystem>().Play();
+                AnlikKarakterSayisi--;
+            }
+        }
     }
 }
